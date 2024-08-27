@@ -1,0 +1,11 @@
+IN000000	00	00	00	Pre-Production	IN	In-Take Initial Questions			
+IN010000	01	00	00	Pre-Production	IN		Can you tell me about your background and experience as an artist?		
+IN020000	02	00	00	Pre-Production	IN		What are your current goals as an artist? (e.g., releasing an album, performing at a certain venue or festival, building a fan base, etc.)		
+IN020100	02	01	00	Pre-Production	IN			Why?	
+IN020101	02	01	01	Pre-Production	IN				Why Again??
+PM000000	00	00	00	Pre-Production	PM	Project Management			
+PM010000	01	00	00	Pre-Production	PM		Will the artist be maintaining a project?		
+TN000000	00	00	00	Pre-Production	TN	Technology			
+TN010000	01	00	00	Pre-Production	TN		Do you need any further tools to work better as an artist?		
+TN010100	01	01	00	Pre-Production	TN			Do you need to build your online presence?	
+TN010200	01	02	00	Pre-Production	TN			Do you need to network?	
