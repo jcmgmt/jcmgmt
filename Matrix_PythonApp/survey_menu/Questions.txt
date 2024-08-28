@@ -8,4 +8,4 @@ PM010000	01	00	00	Pre-Production	PM		Will the artist be maintaining a project?
 TN000000	00	00	00	Pre-Production	TN	Technology			
 TN010000	01	00	00	Pre-Production	TN		Do you need any further tools to work better as an artist?		
 TN010100	01	01	00	Pre-Production	TN			Do you need to build your online presence?	
-TN010200	01	02	00	Pre-Production	TN			Do you need to network?	
+TN010200	01	02	00	Pre-Production	TN			Do you need to network?
