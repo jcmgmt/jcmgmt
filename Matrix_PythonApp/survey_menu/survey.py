@@ -1,5 +1,7 @@
+import os
+
 # Initialize an empty list to store lists of delimiters
-data_list = []
+data_dict = {}
 
 # Open the text file in read mode
 with open('Questions.txt', 'r') as file:
@@ -21,15 +23,27 @@ with open('Questions.txt', 'r') as file:
         question3 = parts[9] if len(parts) > 9 else ''  # Handling cases where question3 might be missing
         
         # Create a list of the variables
-        row_data = [Qid, level_1, level_2, level_3, category, catID, title, question1, question2, question3]
-        
+        row_dict = {
+            "id": Qid,
+            "lvl1": level_1,
+            "lvl2": level_2, 
+            "lvl3": level_3,
+            "category": category,
+            "catID": catID,
+            "title": title,
+            "q1": question1,
+            "q2": question2,
+            "q3": question3
+        }
+                
         # Append the list to the data_list
-        data_list.append(row_data)
+        data_dict[Qid] = row_dict
+    print(data_dict["IN010000"]["category"])
 
 # Now, data_list contains lists of the seven variables for each row
 # You can access the variables for a specific row like this:
-print(data_list[0])  # Output: ['IN000000', '00', '00', '00', 'Pre-Production', 'IN', 'In-Take Initial Questions', '']
-print(data_list[6])  # Output: ['IN010000', '01', '00', '00', 'Pre-Production', 'IN', '', 'Can you tell me about your background and experience as an artist?']
+#print(data_list[0])  # Output: ['IN000000', '00', '00', '00', 'Pre-Production', 'IN', 'In-Take Initial Questions', '']
+#print(data_list[6])  # Output: ['IN010000', '01', '00', '00', 'Pre-Production', 'IN', '', 'Can you tell me about your background and experience as an artist?']
 
 #You can access specific variables within a row using their index in the list. For example, data_list[0][1] would give you 00 for the first row's level_1 value.
-print(data_list[0][6])
+#print(data_list[0][6])

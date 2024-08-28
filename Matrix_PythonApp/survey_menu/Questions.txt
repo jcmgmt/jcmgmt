@@ -1,6 +1,6 @@
 IN000000	00	00	00	Pre-Production	IN	In-Take Initial Questions			
 IN010000	01	00	00	Pre-Production	IN		Can you tell me about your background and experience as an artist?		
-IN020000	02	00	00	Pre-Production	IN		What are your current goals as an artist? (e.g., releasing an album, performing at a certain venue or festival, building a fan base, etc.)		
+IN020000	02	00	00	Pre-Production	IN		What are your current goals as an artist? etc.)		
 IN020100	02	01	00	Pre-Production	IN			Why?	
 IN020101	02	01	01	Pre-Production	IN				Why Again??
 PM000000	00	00	00	Pre-Production	PM	Project Management			
