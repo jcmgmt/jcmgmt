@@ -38,6 +38,8 @@ with open('Questions.txt', 'r') as file:
                 
         # Append the list to the data_list
         data_dict[Qid] = row_dict
+    
+    #AARON'S SUGGESTION: This is how 
     print(data_dict["IN010000"]["category"])
 
 # Now, data_list contains lists of the seven variables for each row
