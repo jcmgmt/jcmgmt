@@ -1,51 +1,76 @@
+import _query_question  #imports variables from separate Python script
+
+#Reference List:
+            # "id"              # Question ID
+            # "lvl1"            # IDxx0000
+            # "lvl2"            # ID00xx00
+            # "lvl3"            # ID0000xx
+            # "tier"            # Tier Name of one of the ten tiers
+            # "catID"           # Category ID (IN, PD, ST, etc.)
+            # "cat"             # Title 
+            # "q1"              # Primary Question (pQ)
+            # "q2"              # Secondary Question (sQ)
+            # "q3"              # Tertiary Question (tQ)
+            # "q"               # What is the question being asked?
+            # "type"            # Boolean or string? 
+            # "if_true_text"    # What to do when value is true
+            # "adv_true"        # Text provided upon response when the value is true or string is provided
+            # "if_false"        # What to do when value is false
+            # "adv_false"       # Text provided upon response when the value is false
+            # "did_know"        # Text provided during question prompt for reader's awareness
+            # "links"           # Text provided to share links
+
 import os
 
-# Initialize an empty list to store lists of delimiters
-data_dict = {}
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-# Open the text file in read mode
-with open('Questions.txt', 'r') as file:
-    # Loop through each line in the file
-    for line in file:
-        # Split the line into components using tab as the delimiter
-        parts = line.strip().split('\t')
-        
-        # Assign each part to a separate variable
-        Qid = parts[0]
-        level_1 = parts[1]
-        level_2 = parts[2]
-        level_3 = parts[3]
-        category = parts[4]
-        catID = parts[5]
-        title = parts[6] if len(parts) > 6 else ''  # Handling cases where title might be missing
-        question1 = parts[7] if len(parts) > 7 else ''  # Handling cases where question1 might be missing
-        question2 = parts[8] if len(parts) > 8 else ''  # Handling cases where question2 might be missing
-        question3 = parts[9] if len(parts) > 9 else ''  # Handling cases where question3 might be missing
-        
-        # Create a list of the variables
-        row_dict = {
-            "id": Qid,
-            "lvl1": level_1,
-            "lvl2": level_2, 
-            "lvl3": level_3,
-            "category": category,
-            "catID": catID,
-            "title": title,
-            "q1": question1,
-            "q2": question2,
-            "q3": question3
-        }
-                
-        # Append the list to the data_list
-        data_dict[Qid] = row_dict
+# Define the ASCII art as a string
+ascii_art = r"""
+  __  __           _         _____                           __  __       _        _      
+ |  \/  |         (_)       / ____|                         |  \/  |     | |      (_)     
+ | \  / |_   _ ___ _  ___  | |     __ _ _ __ ___  ___ _ __  | \  / | __ _| |_ _ __ ___  __
+ | |\/| | | | / __| |/ __| | |    / _` | '__/ _ \/ _ \ '__| | |\/| |/ _` | __| '__| \ \/ /
+ | |  | | |_| \__ \ | (__  | |___| (_| | | |  __/  __/ |    | |  | | (_| | |_| |  | |>  < 
+ |_|  |_|\__,_|___/_|\___|  \_____\__,_|_|  \___|\___|_|    |_|  |_|\__,_|\__|_|  |_/_/\_\
+ -----------------------------------------------------------------------------------------
+"""
+
+# Variable for header space
+header_space = r"""
+"""
+
+def questionInterface():
+    clear_screen()
+    print(ascii_art)  # Print the ASCII art
+    print(header_space)
+    print("[1] Survey")
+    print("[2] People and Careers")
+    print("[3] Tools in the Business")
+    print("[0] Exit")
+
+
+# Main program loop
+while True:
+    questionInterface()
     
-    #AARON'S SUGGESTION: This is how it would work:
-    print(data_dict["IN010000"]["category"])
+    try:
+        option = int(input("Enter your option: "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
 
-# Now, data_list contains lists of the seven variables for each row
-# You can access the variables for a specific row like this:
-#print(data_list[0])  # Output: ['IN000000', '00', '00', '00', 'Pre-Production', 'IN', 'In-Take Initial Questions', '']
-#print(data_list[6])  # Output: ['IN010000', '01', '00', '00', 'Pre-Production', 'IN', '', 'Can you tell me about your background and experience as an artist?']
+    if option == 0:
+        break
+    elif option == 1:
+        surveyMenu()
+    elif option == 2:
+        peopleAndCareersMenu()
+    elif option == 3:
+        toolsInBusinessMenu()
+    else:
+        print("Invalid option. Please try again.")
+        input("Press Enter to continue...")
 
-#You can access specific variables within a row using their index in the list. For example, data_list[0][1] would give you 00 for the first row's level_1 value.
-#print(data_list[0][6])
+clear_screen()
+print("Thanks for using this program. Take care!")
