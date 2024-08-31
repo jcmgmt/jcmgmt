@@ -12,9 +12,9 @@ with open('Questions.txt', 'r') as file:
         
         # Assign each part to a separate variable
         Qid = parts[0]
-        level_1 = parts[1]
-        level_2 = parts[2]
-        level_3 = parts[3]
+        level_1 = int(parts[1])
+        level_2 = int(parts[2])
+        level_3 = int(parts[3])
         tiername = parts[4]
         catID = parts[5]
         category = parts[6] if len(parts) > 6 else ''  # Handling cases where title might be missing
@@ -57,9 +57,55 @@ with open('Questions.txt', 'r') as file:
         data_dict[Qid] = row_dict
     
     #AARON'S SUGGESTION: This is how it would work:
-    # print(data_dict["IN020100"])
+    print(data_dict["IN020100"]["lvl2"] + 2)
 
 # SCRIPT BEGINS HERE
+"""
+def goto_sQ(Qid):
+    # Increment lvl2 by 1
+    lvl1 = int(data_dict[Qid]["lvl1"])
+    lvl2 = int(data_dict[Qid]["lvl2"]) + 1
+    lvl3 = int(data_dict[Qid]["lvl3"])
+    
+    # Concatenate catID + lvl1 + lvl2 + lvl3 to form the new ID
+    new_id_lvl2 = f"{data_dict[Qid]['catID']}{lvl1:02}{lvl2:02}{lvl3:02}"
+    
+    # Open the text file and search for the line that matches the new concatenated ID
+    with open('Questions.txt', 'r') as file:
+        for line in file:
+            if line.startswith(new_id_lvl2):
+                # Split the line to get the parts
+                parts = line.strip().split('\t')
+                
+                # Extract and print the question (q) value
+                question = parts[10]  # Assuming the 11th part is the question
+                print(question)
+                break
+        else:
+            # If no match is found with lvl2 incremented, increment lvl1 and reset lvl2 and lvl3
+            lvl1 += 1
+            lvl2 = 0
+            lvl3 = 0
+            new_id_lvl1 = f"{data_dict[Qid]['catID']}{lvl1:02}{lvl2:02}{lvl3:02}"
+            
+            # Re-open the file and search again for the new ID with incremented lvl1
+            with open('Questions.txt', 'r') as file:
+                for line in file:
+                    if line.startswith(new_id_lvl1):
+                        parts = line.strip().split('\t')
+                        question = parts[10]
+                        print(question)
+                        break
+                else:
+                    print(f"No question found for ID: {new_id_lvl1}")
 
+def goto_tQ():
 
+def next_pQ():
+    
+def next_sQ():
+
+def next_pQ():
+    
+"""
 

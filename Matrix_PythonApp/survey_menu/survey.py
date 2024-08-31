@@ -1,4 +1,5 @@
 import _query_question  #imports variables from separate Python script
+from _query_question import * 
 
 #Reference List:
             # "id"              # Question ID
@@ -37,18 +38,20 @@ ascii_art = r"""
 """
 
 # Variable for header space
-header_space = r"""
-"""
+header_space = r""""""
 
 def questionInterface():
     clear_screen()
     print(ascii_art)  # Print the ASCII art
+    print(data_dict["IN020100"]["q"])
     print(header_space)
-    print("[1] Survey")
-    print("[2] People and Careers")
-    print("[3] Tools in the Business")
+    print("[1] Yes")
+    print("[2] No")
+    # I want to hide options [1] and [2] & show option [1] 'Type your answer' and [2] 'Skip for now' when the question type is "String"
+    # print("[1] Type your answer")
+    # print("[2] Skip for now")
     print("[0] Exit")
-
+    print(header_space)
 
 # Main program loop
 while True:
@@ -57,17 +60,20 @@ while True:
     try:
         option = int(input("Enter your option: "))
     except ValueError:
-        print("Please enter a valid number.")
+        print("Please provide an input.")
         continue
 
     if option == 0:
         break
     elif option == 1:
-        surveyMenu()
+        print("if_true")
     elif option == 2:
-        peopleAndCareersMenu()
-    elif option == 3:
-        toolsInBusinessMenu()
+        print("if_false")
+    # elif option == 1:
+        # if_true
+    # elif option == 2:
+        # if_false
+        
     else:
         print("Invalid option. Please try again.")
         input("Press Enter to continue...")
