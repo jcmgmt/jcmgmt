@@ -60,6 +60,9 @@ with open('Questions.txt', 'r') as file:
     print(data_dict["IN020100"]["lvl2"] + 2)
 
 # SCRIPT BEGINS HERE
+
+def_
+
 """
 def goto_sQ(Qid):
     # Increment lvl2 by 1

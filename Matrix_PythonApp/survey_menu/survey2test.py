@@ -1,3 +1,7 @@
+"""
+TRY WORKING THIS SCRIPT WHEN YOU CAN. SEE IF THIS WORKS FOR YOU.
+
+"""
 import _query_question  #imports variables from separate Python script
 from _query_question import * 
 
@@ -39,41 +43,60 @@ ascii_art = r"""
 
 # Variable for header space
 header_space = r""""""
-
-def questionInterface():
+def questionInterface(current_question_key):
     clear_screen()
     print(ascii_art)  # Print the ASCII art
-    print(f"Question: {data_dict["IN020100"]["q"]}")
+    
+    # Get the current question data
+    question_data = data_dict[current_question_key]
+    
+    # Print the question
+    print(f"Question: {question_data['q']}")
     print(header_space)
-    print("[1] Yes")
-    print("[2] No")
-    # I want to hide options [1] and [2] & show option [1] 'Type your answer' and [2] 'Skip for now' when the question type is "String"
-    # print("[1] Type your answer")
-    # print("[2] Skip for now")
+    
+    # Check the type of question and display options accordingly
+    if question_data["type"] == "String":
+        print("[1] Type your answer")
+        print("[2] Skip for now")
+    else:
+        print("[1] Yes")
+        print("[2] No")
+    
     print("[0] Exit")
     print(header_space)
 
 # Main program loop
+current_question_key = "IN020100"  # Start with the first question
+
 while True:
-    questionInterface()
+    questionInterface(current_question_key)
     
     try:
         option = int(input("Enter your option: "))
     except ValueError:
-        print("Please provide an input.")
+        print("Please provide a valid input.")
         continue
 
     if option == 0:
         break
     elif option == 1:
-        print("if_true")
+        # Handle the "Yes" or "Type your answer" case
+        if data_dict[current_question_key]["type"] == "String":
+            answer = input("Type your answer: ")
+            print(f"Your answer: {answer}")
+            # You can add logic to save or process the answer here
+        else:
+            print("if_true")
+            # Implement logic for navigating to the next question
+            current_question_key = determine_next_question(data_dict[current_question_key])
     elif option == 2:
-        print("if_false")
-    # elif option == 1:
-        # if_true
-    # elif option == 2:
-        # if_false
-        
+        # Handle the "No" or "Skip for now" case
+        if data_dict[current_question_key]["type"] == "String":
+            print("Skipped.")
+        else:
+            print("if_false")
+            # Implement logic for navigating to the next question
+            current_question_key = determine_alternate_question(data_dict[current_question_key])
     else:
         print("Invalid option. Please try again.")
         input("Press Enter to continue...")
