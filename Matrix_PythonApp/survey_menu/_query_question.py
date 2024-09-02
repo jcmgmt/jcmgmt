@@ -57,58 +57,85 @@ with open('Questions.txt', 'r') as file:
         data_dict[Qid] = row_dict
     
     #AARON'S SUGGESTION: This is how it would work:
-    print(data_dict["IN020100"]["lvl2"] + 2)
+    # print(data_dict["IN020100"]["lvl2"] + 2)
 
-# SCRIPT BEGINS HERE
+""" SCRIPTS THAT ARE NOT YET WORKING
 
+# Creates a sorted list of unique catIDs from data_dict
+ordered_catIDs = sorted(set(row["catID"] for row in data_dict.values()))
 
+# Current Question formula
+currentquestion = data_dict.get[{catID}+{level_1}])
 
-"""
-def goto_sQ(Qid):
-    # Increment lvl2 by 1
-    lvl1 = int(data_dict[Qid]["lvl1"])
-    lvl2 = int(data_dict[Qid]["lvl2"]) + 1
-    lvl3 = int(data_dict[Qid]["lvl3"])
-    
-    # Concatenate catID + lvl1 + lvl2 + lvl3 to form the new ID
-    new_id_lvl2 = f"{data_dict[Qid]['catID']}{lvl1:02}{lvl2:02}{lvl3:02}"
-    
-    # Open the text file and search for the line that matches the new concatenated ID
-    with open('Questions.txt', 'r') as file:
-        for line in file:
-            if line.startswith(new_id_lvl2):
-                # Split the line to get the parts
-                parts = line.strip().split('\t')
-                
-                # Extract and print the question (q) value
-                question = parts[10]  # Assuming the 11th part is the question
-                print(question)
-                break
+# Get Question Level (Question 1, Question 2, or Question 3)(Primary, Secondary, Teriary levels)
+def get_qlevel(question1, question2, question3):
+    if question1 == "":
+        if question2 == "":
+            if question3 == "":
+                print("Next Section!")
+                return None  # or return a specific value if needed
+            else:
+                return "Tertiary"
         else:
-            # If no match is found with lvl2 incremented, increment lvl1 and reset lvl2 and lvl3
-            lvl1 += 1
-            lvl2 = 0
-            lvl3 = 0
-            new_id_lvl1 = f"{data_dict[Qid]['catID']}{lvl1:02}{lvl2:02}{lvl3:02}"
-            
-            # Re-open the file and search again for the new ID with incremented lvl1
-            with open('Questions.txt', 'r') as file:
-                for line in file:
-                    if line.startswith(new_id_lvl1):
-                        parts = line.strip().split('\t')
-                        question = parts[10]
-                        print(question)
-                        break
-                else:
-                    print(f"No question found for ID: {new_id_lvl1}")
-
-def goto_tQ():
-
-def next_pQ():
+            return "Secondary"
+    else:
+        return "Primary"
     
-def next_sQ():
+# Branch Logic scripts for Yes/No answers
 
-def next_pQ():
+def find_next_question(catID, lvl1, lvl2, lvl3):
+    # Define possible next questions within the same category
+    next_tq = f"{catID}{str(lvl1).zfill(2)}{str(lvl2).zfill(2)}{str(lvl3 + 1).zfill(2)}"
+    next_sq = f"{catID}{str(lvl1).zfill(2)}{str(lvl2 + 1).zfill(2)}{str(lvl3).zfill(2)}"
+    next_pq = f"{catID}{str(lvl1 + 1).zfill(2)}{str(lvl2).zfill(2)}{str(lvl3).zfill(2)}"
     
-"""
+    # Check for the next tertiary question
+    if next_tq in data_dict:
+        return next_tq
+    # Check for the next secondary question
+    elif next_sq in data_dict:
+        return next_sq
+    # Check for the next primary question
+    elif next_pq in data_dict:
+        return next_pq
+    else:
+        # If no more questions in the current category, move to the next category
+        current_index = ordered_catIDs.index(catID)
+        if current_index < len(ordered_catIDs) - 1:
+            # Get the first question of the next category
+            next_catID = ordered_catIDs[current_index + 1]
+            first_question = next(cat for cat in data_dict if data_dict[cat]["catID"] == next_catID)
+            return first_question
+        else:
+            return None  # No more questions available
 
+# Example usage:
+# current_question = find_next_question("IN", 2, 1, 1)
+# if current_question:
+#     print(data_dict[current_question]["q"])
+# else:
+#     print("No more questions available.")
+
+
+# END FIRST SECTION"""
+
+""" #START SECOND SECTION
+next_tq = f"{catID}+{level_1}+{level_2}+{level_3 + 1}"
+next_sq = ({catID}+{level_1}+{level_2 + 1}+{level_3})
+next_pq = ({catID}+{level_1 + 1}+{level_2}+{level_3})
+
+if_pq = 
+    if next_pq in data_dict
+        currentquestion = next_pq
+    else: #GO TO THE NEXT catID
+
+if_sq = 
+    if next_sq in data_dict
+        currentquestion = next_sq
+    else: if_pq
+
+if_tq =
+    if next_tq in data_dict
+        currentquestion = next_tq
+    else: if_sq
+# END SECOND SECTION"""

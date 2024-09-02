@@ -1,3 +1,6 @@
 IN020000	02	00	00	Pre-Production	IN		Are you interested in this idea?			Are you interested in this idea?	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
 IN020100	02	01	00	Pre-Production	IN			Are you sure?		Are you sure?	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
 IN020101	02	01	01	Pre-Production	IN				Explain why you're interested.	Explain why you're interested.	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]
+ED010000	01	00	00	Pre-Production	ED		[INSERT PQUESTION]			[INSERT PQUESTION]	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
+ED010100	01	01	00	Pre-Production	ED			[INSERT SQUESTION]		[INSERT SQUESTION]	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
+ED010101	01	01	01	Pre-Production	ED				[INSERT TQUESTION]	[INSERT TQUESTION]	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]
