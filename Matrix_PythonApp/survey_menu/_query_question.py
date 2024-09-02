@@ -61,7 +61,7 @@ with open('Questions.txt', 'r') as file:
 
 # SCRIPT BEGINS HERE
 
-def_
+
 
 """
 def goto_sQ(Qid):

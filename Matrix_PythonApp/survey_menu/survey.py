@@ -43,7 +43,7 @@ header_space = r""""""
 def questionInterface():
     clear_screen()
     print(ascii_art)  # Print the ASCII art
-    print(f"Question: {data_dict["IN020100"]["q"]}")
+    print(f"Question: {data_dict["IN020000"]["q"]}")
     print(header_space)
     print("[1] Yes")
     print("[2] No")
@@ -59,6 +59,10 @@ while True:
     
     try:
         option = int(input("Enter your option: "))
+            # if currentquestion {Type} == "Boolean"
+                # int(input("Enter your option: "))
+            # elseif currentquestion {Type} == "String"
+                # str(input("Provide your answer: "))
     except ValueError:
         print("Please provide an input.")
         continue
