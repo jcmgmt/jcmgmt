@@ -8,6 +8,7 @@ from _query_question import *
             # "lvl3"            # ID0000xx
             # "tier"            # Tier Name of one of the ten tiers
             # "catID"           # Category ID (IN, PD, ST, etc.)
+            # "catname"         # Category name
             # "cat"             # Title 
             # "q1"              # Primary Question (pQ)
             # "q2"              # Secondary Question (sQ)
