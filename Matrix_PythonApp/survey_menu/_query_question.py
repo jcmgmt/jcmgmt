@@ -73,13 +73,52 @@ print(cat_dict)  # Print the unique catID-catname pairs in order
 catID_list = list(cat_dict.keys())[1]
 print(catID_list)
 
-""" SCRIPTS THAT ARE NOT YET WORKING
+# SCRIPTS THAT ARE NOT YET WORKING
 
-# Creates a sorted list of unique catIDs from question_dict
-ordered_catIDs = sorted(set(row["catID"] for row in question_dict.values()))
+### Current Question formula
+# Initialize the starting point for currentquestion using the first catID
+first_catID = list(cat_dict.keys())[0]  # Get the first catID from cat_dict
 
-# Current Question formula
-currentquestion = question_dict.get[{catID}+{level_1}])
+# Initialize level variables
+level_1 = 0
+level_2 = 0
+level_3 = 0
+
+# Construct the initial currentquestion (e.g., "IN000000")
+currentquestion = f"{first_catID}{level_1:02}{level_2:02}{level_3:02}"
+
+# Function to generate next_tq, next_sq, and next_pq
+def generate_next_question_ids(catID, level_1, level_2, level_3):
+    next_tq = f"{catID}{level_1:02}{level_2:02}{level_3 + 1:02}"
+    next_sq = f"{catID}{level_1:02}{level_2 + 1:02}{level_3:02}"
+    next_pq = f"{catID}{level_1 + 1:02}{level_2:02}{level_3:02}"
+    return next_tq, next_sq, next_pq
+
+# Now generate the next_tq, next_sq, next_pq based on current values
+next_tq, next_sq, next_pq = generate_next_question_ids(first_catID, level_1, level_2, level_3)
+
+# Example of how to check and update currentquestion based on the existence of next questions in question_dict
+if next_tq in question_dict:
+    currentquestion = next_tq
+elif next_sq in question_dict:
+    currentquestion = next_sq
+elif next_pq in question_dict:
+    currentquestion = next_pq
+else:
+    # If none are found, go to the next catID
+    next_catID = get_next_catID(first_catID)  # Function to get the next catID
+    if next_catID:
+        currentquestion = f"{next_catID}000000"  # Reset to the first level of the new catID
+    else:
+        currentquestion = None  # No more questions left
+
+# Example usage:
+# current_question = find_next_question("IN", 2, 1, 1)
+# if current_question:
+#     print(question_dict[current_question]["q"])
+# else:
+#     print("No more questions available.")
+
 
 # Get Question Level (Question 1, Question 2, or Question 3)(Primary, Secondary, Teriary levels)
 def get_qlevel(question1, question2, question3):
@@ -95,45 +134,9 @@ def get_qlevel(question1, question2, question3):
     else:
         return "Primary"
     
-# Branch Logic scripts for Yes/No answers
+### Branch Logic scripts for Yes/No answers
 
-def find_next_question(catID, lvl1, lvl2, lvl3):
-    # Define possible next questions within the same category
-    next_tq = f"{catID}{str(lvl1).zfill(2)}{str(lvl2).zfill(2)}{str(lvl3 + 1).zfill(2)}"
-    next_sq = f"{catID}{str(lvl1).zfill(2)}{str(lvl2 + 1).zfill(2)}{str(lvl3).zfill(2)}"
-    next_pq = f"{catID}{str(lvl1 + 1).zfill(2)}{str(lvl2).zfill(2)}{str(lvl3).zfill(2)}"
-    
-    # Check for the next tertiary question
-    if next_tq in question_dict:
-        return next_tq
-    # Check for the next secondary question
-    elif next_sq in question_dict:
-        return next_sq
-    # Check for the next primary question
-    elif next_pq in question_dict:
-        return next_pq
-    else:
-        # If no more questions in the current category, move to the next category
-        current_index = ordered_catIDs.index(catID)
-        if current_index < len(ordered_catIDs) - 1:
-            # Get the first question of the next category
-            next_catID = ordered_catIDs[current_index + 1]
-            first_question = next(cat for cat in question_dict if question_dict[cat]["catID"] == next_catID)
-            return first_question
-        else:
-            return None  # No more questions available
-
-# Example usage:
-# current_question = find_next_question("IN", 2, 1, 1)
-# if current_question:
-#     print(question_dict[current_question]["q"])
-# else:
-#     print("No more questions available.")
-
-
-# END FIRST SECTION"""
-
-# LOGIC FOR GOING TO NEXT QUESTIONS
+### BRANCH LOGIC FOR YES/NO QUESTIONS
 
 # Generate the next tq, sq, and pq question IDs
 next_tq = f"{catID}{level_1:02}{level_2:02}{level_3 + 1:02}"
@@ -192,6 +195,7 @@ else:
                 currentquestion = None  # No more questions available
 
 """
+### JUSTIN'S BRANCH LOGIC NOTES
 next_tq = f"{catID}+{level_1}+{level_2}+{level_3 + 1}"
 next_sq = ({catID}+{level_1}+{level_2 + 1}+{level_3})
 next_pq = ({catID}+{level_1 + 1}+{level_2}+{level_3})
