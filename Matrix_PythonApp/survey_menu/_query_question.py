@@ -17,19 +17,18 @@ with open('Questions.txt', 'r') as file:
         level_3 = int(parts[3])
         tiername = parts[4]
         catID = parts[5]
-        catname = parts[6]
-        category = parts[7] if len(parts) > 7 else ''  # Handling cases where title might be missing
-        question1 = parts[8] if len(parts) > 8 else ''  # Handling cases where question1 might be missing
-        question2 = parts[9] if len(parts) > 9 else ''  # Handling cases where question2 might be missing
-        question3 = parts[10] if len(parts) > 10 else ''  # Handling cases where question3 might be missing
-        question = parts[11]
-        type = parts[12]
-        if_trueortext = parts[13]
-        advice_iftrueortext = parts[14]
-        if_false = parts[15]
-        advice_iffalse = parts[16]
-        did_you_know = parts[17]
-        weblinks = parts[18]
+        category = parts[6] if len(parts) > 6 else ''  # Handling cases where title might be missing
+        question1 = parts[7] if len(parts) > 7 else ''  # Handling cases where question1 might be missing
+        question2 = parts[8] if len(parts) > 8 else ''  # Handling cases where question2 might be missing
+        question3 = parts[9] if len(parts) > 9 else ''  # Handling cases where question3 might be missing
+        question = parts[10]
+        type = parts[11]
+        if_trueortext = parts[12]
+        advice_iftrueortext = parts[13]
+        if_false = parts[14]
+        advice_iffalse = parts[15]
+        did_you_know = parts[16]
+        weblinks = parts[17]
         
         # Create a list of the variables
         row_dict = {
@@ -40,7 +39,6 @@ with open('Questions.txt', 'r') as file:
             "tier": tiername,                       # Tier Name of one of the ten tiers
             "catID": catID,                         # Category ID (IN, PD, ST, etc.)
             "cat": category,                        # Title 
-            "catname": catname,                     # Category Name
             "q1": question1,                        # Primary Question (pQ)
             "q2": question2,                        # Secondary Question (sQ)
             "q3": question3,                        # Tertiary Question (tQ)
