@@ -85,6 +85,9 @@ def questionInterface():
     yesno_entertext(currentquestion)  # Call the function to handle the question type
     print("[0] Exit")
     print(header_space)
+    print("(INSERT 'Did You Know' key from the 'did_know' dictionary entry for currentquestion variable)")
+    print(header_space)
+    print("(INSERT 'Links' key from the 'links' dictionary entry for currentquestion variable)")
 
 # Main program loop
 while True:
@@ -96,11 +99,15 @@ while True:
         if option == 0:
             break
         elif option == 1:
-            print("Handling 'Yes' option")
-            # Add handling for 'Yes' option here
+            # Print "adv_true" value from dictionary entry for currentquestion
+            # perform "if_true_text" value provided from dictionary entry for currentquestion. This should go to the next pQ, sQ, or tQ.
+            #
+        elif option == "TEXT":
+            # Print "adv_true" value from dictionary entry for currentquestion
+            # perform "if_true_text" value provided from dictionary entry for currentquestion. This should go to the next pQ, sQ, or tQ.
         elif option == 2:
-            print("Handling 'No' option")
-            # Add handling for 'No' option here
+            # Print "adv_false" value from dictionary entry for currentquestion
+            # perform "if_false_text" value provided from dictionary entry for currentquestion. This should go to the next pQ, sQ, or tQ.
         else:
             print("Invalid option. Please try again.")
             input("Press Enter to continue...")
