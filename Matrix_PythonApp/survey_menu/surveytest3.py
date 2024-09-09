@@ -43,7 +43,7 @@ header_space = r""""""
 def questionInterface():
     clear_screen()
     print(ascii_art)  # Print the ASCII art
-    print(f"Question: {data_dict["IN020000"]["q"]}")
+    print(f"Question: {question_dict["IN020000"]["q"]}")
     print(header_space)
     print("[1] Yes")
     print("[2] No")

@@ -48,7 +48,7 @@ def questionInterface(current_question_key):
     print(ascii_art)  # Print the ASCII art
     
     # Get the current question data
-    question_data = data_dict[current_question_key]
+    question_data = question_dict[current_question_key]
     
     # Print the question
     print(f"Question: {question_data['q']}")
@@ -81,22 +81,22 @@ while True:
         break
     elif option == 1:
         # Handle the "Yes" or "Type your answer" case
-        if data_dict[current_question_key]["type"] == "String":
+        if question_dict[current_question_key]["type"] == "String":
             answer = input("Type your answer: ")
             print(f"Your answer: {answer}")
             # You can add logic to save or process the answer here
         else:
             print("if_true")
             # Implement logic for navigating to the next question
-            current_question_key = determine_next_question(data_dict[current_question_key])
+            current_question_key = determine_next_question(question_dict[current_question_key])
     elif option == 2:
         # Handle the "No" or "Skip for now" case
-        if data_dict[current_question_key]["type"] == "String":
+        if question_dict[current_question_key]["type"] == "String":
             print("Skipped.")
         else:
             print("if_false")
             # Implement logic for navigating to the next question
-            current_question_key = determine_alternate_question(data_dict[current_question_key])
+            current_question_key = determine_alternate_question(question_dict[current_question_key])
     else:
         print("Invalid option. Please try again.")
         input("Press Enter to continue...")
