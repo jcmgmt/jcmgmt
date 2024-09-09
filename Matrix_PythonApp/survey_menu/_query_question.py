@@ -1,6 +1,7 @@
 import os
-
 from collections import OrderedDict
+
+########################### CREATE DICTIONARIES FROM QUESTION TEXT DOCUMENT ###########################
 
 # Initialize an empty list to store lists of delimiters
 question_dict = {}
@@ -65,18 +66,16 @@ with open('Questions.txt', 'r') as file:
 
         # Append the list to the data_list
         question_dict[Qid] = row_dict
-    
+
 # Example: Accessing values from question_dict and cat_dict
-print(question_dict["ED000000"]["catname"])  # Access the catname for a specific question ID
+print(question_dict.get("ED000000", {}).get("catname", "Not found"))  # Access the catname for a specific question ID
 print(cat_dict)  # Print the unique catID-catname pairs in order
 
-catID_list = list(cat_dict.keys())[1]
-print(catID_list)
+########################### SELECTS THE FIRST QUESTION TO START THE SURVEY ###########################
+# This configures the variable "currentquestion" to start with the first line item & disctionary key in the question_dict dictionary. 
+# Essentially, this should start with "IN000000". Once the survey begins, the resulting "Yes/No" questions will guide the survey moving forward.
 
-# SCRIPTS THAT ARE NOT YET WORKING
-
-### Current Question formula
-# Initialize the starting point for currentquestion using the first catID
+# Initialize the starting point for currentquestion using the first line item & dictionary key in the question_dict dictionary
 first_catID = list(cat_dict.keys())[0]  # Get the first catID from cat_dict
 
 # Initialize level variables
@@ -84,66 +83,25 @@ level_1 = 0
 level_2 = 0
 level_3 = 0
 
-# Construct the initial currentquestion (e.g., "IN000000")
-currentquestion = f"{first_catID}{level_1:02}{level_2:02}{level_3:02}"
+# Construct the initial qID (e.g., "IN000000")
+initial_qID = f"{first_catID}{level_1:02}{level_2:02}{level_3:02}"
 
-# Function to generate next_tq, next_sq, and next_pq
+# Retrieve the question text for the initial qID
+currentquestion = question_dict.get(initial_qID, {}).get('q', 'No question found')
+
+########################### FUNCTION TO GENERATE NEXT QUESTION IDs ###########################
+
 def generate_next_question_ids(catID, level_1, level_2, level_3):
     next_tq = f"{catID}{level_1:02}{level_2:02}{level_3 + 1:02}"
     next_sq = f"{catID}{level_1:02}{level_2 + 1:02}{level_3:02}"
     next_pq = f"{catID}{level_1 + 1:02}{level_2:02}{level_3:02}"
     return next_tq, next_sq, next_pq
 
-# Now generate the next_tq, next_sq, next_pq based on current values
+# Generate the next_tq, next_sq, next_pq based on current values
 next_tq, next_sq, next_pq = generate_next_question_ids(first_catID, level_1, level_2, level_3)
 
-# Example of how to check and update currentquestion based on the existence of next questions in question_dict
-if next_tq in question_dict:
-    currentquestion = next_tq
-elif next_sq in question_dict:
-    currentquestion = next_sq
-elif next_pq in question_dict:
-    currentquestion = next_pq
-else:
-    # If none are found, go to the next catID
-    next_catID = get_next_catID(first_catID)  # Function to get the next catID
-    if next_catID:
-        currentquestion = f"{next_catID}000000"  # Reset to the first level of the new catID
-    else:
-        currentquestion = None  # No more questions left
+########################### FUNCTION TO GET NEXT CATID ###########################
 
-# Example usage:
-# current_question = find_next_question("IN", 2, 1, 1)
-# if current_question:
-#     print(question_dict[current_question]["q"])
-# else:
-#     print("No more questions available.")
-
-
-# Get Question Level (Question 1, Question 2, or Question 3)(Primary, Secondary, Teriary levels)
-def get_qlevel(question1, question2, question3):
-    if question1 == "":
-        if question2 == "":
-            if question3 == "":
-                print("Next Section!")
-                return None  # or return a specific value if needed
-            else:
-                return "Tertiary"
-        else:
-            return "Secondary"
-    else:
-        return "Primary"
-    
-### Branch Logic scripts for Yes/No answers
-
-### BRANCH LOGIC FOR YES/NO QUESTIONS
-
-# Generate the next tq, sq, and pq question IDs
-next_tq = f"{catID}{level_1:02}{level_2:02}{level_3 + 1:02}"
-next_sq = f"{catID}{level_1:02}{level_2 + 1:02}{level_3:02}"
-next_pq = f"{catID}{level_1 + 1:02}{level_2:02}{level_3:02}"
-
-# Helper function to find the next catID in cat_dict
 def get_next_catID(current_catID):
     cat_keys = list(cat_dict.keys())  # Get list of catIDs
     if current_catID in cat_keys:
@@ -152,67 +110,61 @@ def get_next_catID(current_catID):
             return cat_keys[current_index + 1]
     return None  # No next catID, return None
 
-# if_pq block
-if next_pq in question_dict:
-    currentquestion = next_pq
-else:
-    next_catID = get_next_catID(catID)  # Get the next catID if available
-    if next_catID:
-        # Generate the first pq for the next catID
-        currentquestion = f"{next_catID}01{0:02}{0:02}"
-    else:
-        currentquestion = None  # No more questions available
+########################### BRANCH LOGIC FOR QUESTION NAVIGATION ###########################
+# This is used when an answer is selected  in the survey.
+# Essentially, it checks what level the "currentquestion" value is, performs math to 
+# update the "currentquestion" variable, and then searches the dictionary with the newly updated value.
 
-# if_sq block
-if next_sq in question_dict:
-    currentquestion = next_sq
-else:
-    # Fallback to if_pq if next_sq doesn't exist
-    if next_pq in question_dict:
-        currentquestion = next_pq
-    else:
-        next_catID = get_next_catID(catID)  # Get the next catID if available
-        if next_catID:
-            currentquestion = f"{next_catID}01{0:02}{0:02}"
-        else:
-            currentquestion = None  # No more questions available
-
-# if_tq block
+# Update currentquestion based on the existence of next questions in question_dict
 if next_tq in question_dict:
-    currentquestion = next_tq
+    currentquestion = question_dict[next_tq].get('q', 'No question found')
+elif next_sq in question_dict:
+    currentquestion = question_dict[next_sq].get('q', 'No question found')
+elif next_pq in question_dict:
+    currentquestion = question_dict[next_pq].get('q', 'No question found')
 else:
-    # Fallback to if_sq if next_tq doesn't exist
-    if next_sq in question_dict:
-        currentquestion = next_sq
+    # If none are found, go to the next catID
+    next_catID = get_next_catID(first_catID)  # Function to get the next catID
+    if next_catID:
+        currentquestion = question_dict.get(f"{next_catID}000000", {}).get('q', 'No question found')  # Reset to the first level of the new catID
     else:
-        if next_pq in question_dict:
-            currentquestion = next_pq
-        else:
-            next_catID = get_next_catID(catID)  # Get the next catID if available
-            if next_catID:
-                currentquestion = f"{next_catID}01{0:02}{0:02}"
+        currentquestion = 'No more questions available'
+
+########################### VARIABLE FOR "isq" ###########################
+# This variable simply displays the result from the 'get_qlevel' function.
+# It should display the "Primary", "Secondary", or "Tertiary" text.
+
+def get_qlevel(currentquestion):
+    q1 = currentquestion.get('q1', '')
+    q2 = currentquestion.get('q2', '')
+    q3 = currentquestion.get('q3', '')
+
+    if q1 == "":
+        if q2 == "":
+            if q3 == "":
+                return "Error: All question levels are empty"
             else:
-                currentquestion = None  # No more questions available
+                return "Tertiary"
+        else:
+            return "Secondary"
+    else:
+        return "Primary"
 
-"""
-### JUSTIN'S BRANCH LOGIC NOTES
-next_tq = f"{catID}+{level_1}+{level_2}+{level_3 + 1}"
-next_sq = ({catID}+{level_1}+{level_2 + 1}+{level_3})
-next_pq = ({catID}+{level_1 + 1}+{level_2}+{level_3})
+isq = get_qlevel(question_dict.get(initial_qID, {}))  # This should be set to "Primary", "Secondary", or "Tertiary"
+# option = 1     # This is the user's response option
 
-if_pq = 
-    if next_pq in question_dict
-        currentquestion = next_pq
-    else: # catID_list[0 + 1]
+# Define variables for the actions
+ifsq = "Perform action for Primary question"
+iftq = "Perform action for Secondary or Tertiary question"
 
-if_sq = 
-    if next_sq in question_dict
-        currentquestion = next_sq
-    else: if_pq
+# Configure actions based on isq and option
+option = 1  # Example user response
+if isq == "Primary" and option == 1:
+    result = ifsq
+elif isq in ["Secondary", "Tertiary"] and option == 1:
+    result = iftq
+else:
+    result = "No action taken or invalid input"
 
-if_tq =
-    if next_tq in question_dict
-        currentquestion = next_tq
-    else: if_sq
-"""
-# END SECOND SECTION"""
+# Output the result for debugging or further processing
+print(result)

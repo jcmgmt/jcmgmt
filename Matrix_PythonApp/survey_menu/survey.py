@@ -1,32 +1,69 @@
 import _query_question  #imports variables from separate Python script
 from _query_question import * 
 
-#Reference List:
-            # "id"              # Question ID
-            # "lvl1"            # IDxx0000
-            # "lvl2"            # ID00xx00
-            # "lvl3"            # ID0000xx
-            # "tier"            # Tier Name of one of the ten tiers
-            # "catID"           # Category ID (IN, PD, ST, etc.)
-            # "cat"             # Title 
-            # "q1"              # Primary Question (pQ)
-            # "q2"              # Secondary Question (sQ)
-            # "q3"              # Tertiary Question (tQ)
-            # "q"               # What is the question being asked?
-            # "type"            # Boolean or string? 
-            # "if_true_text"    # What to do when value is true
-            # "adv_true"        # Text provided upon response when the value is true or string is provided
-            # "if_false"        # What to do when value is false
-            # "adv_false"       # Text provided upon response when the value is false
-            # "did_know"        # Text provided during question prompt for reader's awareness
-            # "links"           # Text provided to share links
-
 import os
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# Define the ASCII art as a string
+########################### VARIABLE FOR header_space ###########################
+# Just a variable to add space in the CLI display
+
+header_space = r""""""
+
+########################### FUNCTION FOR "get_qlevel" ############################
+# Function used to determine the currently visible question ('currentquestion')'s level by checking the selected questoion's dictonary keys "q1", "q2", and "q3" 
+# (Result displays whether it's a "Primary", "Secondary", or "Tertiary" level question)
+
+def get_qlevel(currentquestion):
+    # Retrieve question levels from currentquestion
+    q1 = currentquestion.get('q1', '')
+    q2 = currentquestion.get('q2', '')
+    q3 = currentquestion.get('q3', '')
+
+    # Determine the question level based on the presence of q1, q2, and q3
+    if q1 == "":
+        if q2 == "":
+            if q3 == "":
+                return "Error: All question levels are empty"
+            else:
+                return "Tertiary"
+        else:
+            return "Secondary"
+    else:
+        return "Primary"
+
+########################### FUNCTION FOR YES/NO or ENTER TEXT ############################
+# This function determines whether or not to display "Yes/No" as answer options, or to display "Enter Text" instead.
+
+def yesno_entertext(currentquestion):
+    # Retrieve the type from currentquestion
+    question_type = currentquestion.get("type", "")
+
+    if question_type == "Boolean":
+        print("[1] Yes")
+        print("[2] No")
+        try:
+            option = int(input("Enter your option (1 for Yes, 2 for No): "))
+            if option == 1:
+                print("You selected: Yes")
+            elif option == 2:
+                print("You selected: No")
+            else:
+                print("Invalid option")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    elif question_type == "String":
+        option = input("Enter your input: ")
+        print(f"You entered: {option}")
+
+    else:
+        print("Error: Unsupported question type")
+
+########################### ASCII Header Art ###########################
+# ASCII art for the survey's header
+
 ascii_art = r"""
   __  __           _         _____                           __  __       _        _      
  |  \/  |         (_)       / ____|                         |  \/  |     | |      (_)     
@@ -36,20 +73,16 @@ ascii_art = r"""
  |_|  |_|\__,_|___/_|\___|  \_____\__,_|_|  \___|\___|_|    |_|  |_|\__,_|\__|_|  |_/_/\_\
  -----------------------------------------------------------------------------------------
 """
-
-# Variable for header space
-header_space = r""""""
+########################### SURVEY INTERFACE DISPLAY ###########################
+# The following code is used to design the CLI interface
 
 def questionInterface():
     clear_screen()
-    print(ascii_art)  # Print the ASCII art
-    print(currentquestion)
-    print(header_space)
-    print("[1] Yes")
-    print("[2] No")
-    # I want to hide options [1] and [2] & show option [1] 'Type your answer' and [2] 'Skip for now' when the question type is "String"
-    # print("[1] Type your answer")
-    # print("[2] Skip for now")
+    print(ascii_art)            # Print the ASCII art
+    print(f"Current Question Level: {isq}")  # Display the current question level
+    print(f"Question: {currentquestion.get('q', '')}")  # Display the current question
+    print(header_space)         # Display header space
+    yesno_entertext(currentquestion)  # Call the function to handle the question type
     print("[0] Exit")
     print(header_space)
 
@@ -59,29 +92,22 @@ while True:
     
     try:
         option = int(input("Enter your option: "))
-            # if currentquestion {Type} == "Boolean"
-                # int(input("Enter your option: "))
-            # elseif currentquestion {Type} == "String"
-                # str(input("Provide your answer: "))
-    except ValueError:
-        print("Please provide an input.")
-        continue
-
-    if option == 0:
-        break
-    elif option == 1:
-        print("if_true")
-    elif option == 2:
-        print("if_false")
-    # elif option == 1:
-        # if_true
-    # elif option == 2:
-        # if_false
         
-    else:
-        print("Invalid option. Please try again.")
+        if option == 0:
+            break
+        elif option == 1:
+            print("Handling 'Yes' option")
+            # Add handling for 'Yes' option here
+        elif option == 2:
+            print("Handling 'No' option")
+            # Add handling for 'No' option here
+        else:
+            print("Invalid option. Please try again.")
+            input("Press Enter to continue...")
+    
+    except ValueError:
+        print("Please provide a valid input.")
         input("Press Enter to continue...")
 
 clear_screen()
 print("Thanks for using this program. Take care!")
-
