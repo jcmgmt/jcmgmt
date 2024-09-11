@@ -1,0 +1,52 @@
+Requirements for the app:
+
+# How the app will source data from Google Sheets (via text export)
+
+    - Source data from Google Sheets is easy to modify & query (or export)
+    - Questions in the survey (for the most part) need to be completed 'in order'
+    - Show a "Main Menu", where you can navigate to three different options:
+
+    + Survey
+    + 'People and Careers' Tool
+    + 'Tools in the Business' Tool
+
+# Survey requirements (in the form of a CLI survey):
+
+        + Begin Survey
+        + Navigate to survey section by category
+        + Search survey questions by keywords 
+
+    - Have the option to begin the survey at the beginning of the source data (or top)
+    - Have the optino to exit the survey at any time
+    - Have the option to start the survey at certain sections (instead of at the beginning)
+    - Have the option to skip sections as you progress through the survey
+    - Shows "Did You Know" text with each question throughout the survey
+    - Logs your survey results with each attempt
+    - Have the option to export your logged survey results upon exit
+    - Have the option to search the question catalog for keywords & then to ask those specifically selected questions 
+    - Show headers above each question to show general text
+    - Clear the screen after every prompt to make it look clean
+    - Have the option to answer certain questions with text to be referenced later (by variables)
+
+# Survey (in the form of a web application):
+
+    - (See document titled "DEMO FOR CONSULTATION TOOL.pptx"
+
+# 'People & Careers' Tool menu
+
+    (menu that displays when 'People & Careers' Tool menu is selected: 
+        + Show all categories
+            + (Shows all categories to select from) 
+        + Navigate to survey section by category
+        + Search job positions by keywords 
+
+# 'Tools in the Business' Tool menu
+
+    (menu that displays when 'Tools in the Business' Tool menu is selected: 
+        + Show all categories
+                + Show all categories
+            + (Shows all categories to select from) 
+        + Navigate to survey section by category
+        + Search apps & websites by keywords 
+
+
