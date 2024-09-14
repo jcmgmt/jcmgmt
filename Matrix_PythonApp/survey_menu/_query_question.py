@@ -68,7 +68,7 @@ with open('Questions.txt', 'r') as file:
         question_dict[Qid] = row_dict
 
 # Example: Accessing values from question_dict and cat_dict
-print(question_dict.get("ED000000", {}).get("catname", "Not found"))  # Access the catname for a specific question ID
+#print(question_dict.get("ED000000", {}).get("catname", "Not found"))  # Access the catname for a specific question ID
 print(cat_dict)  # Print the unique catID-catname pairs in order
 
 ########################### SELECTS THE FIRST QUESTION TO START THE SURVEY ###########################
