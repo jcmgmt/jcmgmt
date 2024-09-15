@@ -3,6 +3,7 @@ Requirements for the app:
 # How the app will source data from Google Sheets (via text export)
 
     - Source data from Google Sheets is easy to modify & query (or export)
+        - (DEMO SHEET) https://docs.google.com/spreadsheets/d/1yaOq2YkyYaP46e819sLXIuenBiIYgcYjE3hPklUSBQ0/edit?usp=sharing (anyone with link)
     - Questions in the survey (for the most part) need to be completed 'in order'
     - Show a "Main Menu", where you can navigate to three different options:
 
