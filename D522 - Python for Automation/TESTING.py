@@ -1,6 +1,3 @@
-user_phrase = input("Enter a phrase: ")
-length = len(user_phrase)
-type = type(user_phrase)
-max = max(user_phrase)
-
-print(max)
+fav_numbers = {'id': 0, 'name': "zero"}
+for name, number in fav_numbers.items():
+ print(name + ' loves ' + str(number))
