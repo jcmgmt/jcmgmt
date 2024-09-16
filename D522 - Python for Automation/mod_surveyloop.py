@@ -17,3 +17,9 @@ def surveyloop():
             print(f"You entered a custom string: {user_input}")
 
 surveyloop()
+
+"""
+fav_numbers = {'id': 0, 'name': "zero"}
+for name, number in fav_numbers.items():
+ print(name + ' loves ' + str(number))
+"""
