@@ -1,0 +1,14 @@
+PPT000000	00	00	00	Pre-Production	PPT	The Team - Pre-Production	The Team - Pre-Production											
+PPT010000	01	00	00	Pre-Production	PPT	The Team - Pre-Production		Interested in seeing the key players of Pre-Production?			Interested in seeing the key players of Pre-Production?			[STEPS]		[STEPS]		[TEAMS]
+PPO000000	00	00	00	Pre-Production	PPO	The Tools - Pre-Production	The Tools - Pre-Production											
+PPO010000	01	00	00	Pre-Production	PPO	The Tools - Pre-Production		Would you like to see the common tools that are used in Pre-Production?			Would you like to see the common tools that are used in Pre-Production?			[STEPS]		[STEPS]		[TOOLS]
+IN000000	00	00	00	Pre-Production	IN	In-Take Initial Questions	In-Take Initial Questions											
+IN010000	01	00	00	Pre-Production	IN	In-Take Initial Questions		Are you interested in this idea?			Are you interested in this idea?	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
+IN010100	01	01	00	Pre-Production	IN	In-Take Initial Questions			Are you sure?		Are you sure?	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
+IN010101	01	01	01	Pre-Production	IN	In-Take Initial Questions				Explain why you're interested.	Explain why you're interested.	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]
+ED000000	00	00	00	Pre-Production	ED	Education	Education											
+ED010000	01	00	00	Pre-Production	ED	Education		[INSERT PQUESTION]			[INSERT PQUESTION]	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
+ED010100	01	01	00	Pre-Production	ED	Education			[INSERT SQUESTION]		[INSERT SQUESTION]	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
+ED010200	01	02	00	Pre-Production	ED	Education			[INSERT SQUESTION]		[INSERT SQUESTION]	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
+ED010201	01	02	01	Pre-Production	ED	Education				[INSERT TQUESTION]	[INSERT TQUESTION]	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]
+ED010202	01	02	02	Pre-Production	ED	Education				[INSERT TQUESTION]	[INSERT TQUESTION]	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]

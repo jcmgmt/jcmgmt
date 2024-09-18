@@ -1,0 +1,187 @@
+combined_dict = {
+    "IN": (
+        "In-Take Initial Questions",  # Category Name for "IN"
+        {
+            "IN010000": {
+                "id": "IN010000",
+                "lvl1": 1,
+                "lvl2": 0,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "IN",
+                "catname": "In-Take Initial Questions",
+                "cat": "In-Take Initial Questions",
+                "q1": "Are you interested in this idea?",
+                "q2": "",
+                "q3": "",
+                "q": "Are you interested in this idea?",
+                "type": "Boolean",
+                "if_true_text": "Go to sQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next pQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW\"",
+                "links": "[LINK]"
+            },
+            "IN010100": {
+                "id": "IN010100",
+                "lvl1": 1,
+                "lvl2": 1,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "IN",
+                "catname": "In-Take Initial Questions",
+                "cat": "In-Take Initial Questions",
+                "q1": "",
+                "q2": "Are you sure?",
+                "q3": "",
+                "q": "Are you sure?",
+                "type": "Boolean",
+                "if_true_text": "Go to tQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next sQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW 2\"",
+                "links": "[LINK2]"
+            },
+            "IN010101": {
+                "id": "IN010101",
+                "lvl1": 1,
+                "lvl2": 1,
+                "lvl3": 1,
+                "tier": "Pre-Production",
+                "catID": "IN",
+                "catname": "In-Take Initial Questions",
+                "cat": "In-Take Initial Questions",
+                "q1": "",
+                "q2": "",
+                "q3": "Explain why you're interested.",
+                "q": "Explain why you're interested.",
+                "type": "String",
+                "if_true_text": "Go to next tQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next tQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW 3\"",
+                "links": "[LINK3]"
+            }
+        }
+    ),
+    "ED": (
+        "Education",  # Category Name for "ED"
+        {
+            "ED000000": {
+                "id": "ED000000",
+                "lvl1": 0,
+                "lvl2": 0,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "ED",
+                "catname": "Education",
+                "cat": "Education",
+                "q1": "",
+                "q2": "",
+                "q3": "",
+                "q": "",
+                "type": "",
+                "if_true_text": "",
+                "adv_true": "",
+                "if_false": "",
+                "adv_false": "",
+                "did_know": "",
+                "links": ""
+            },
+            "ED010000": {
+                "id": "ED010000",
+                "lvl1": 1,
+                "lvl2": 0,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "ED",
+                "catname": "Education",
+                "cat": "Education",
+                "q1": "[INSERT PQUESTION]",
+                "q2": "",
+                "q3": "",
+                "q": "[INSERT PQUESTION]",
+                "type": "Boolean",
+                "if_true_text": "Go to sQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next pQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW\"",
+                "links": "[LINK]"
+            },
+            "ED010100": {
+                "id": "ED010100",
+                "lvl1": 1,
+                "lvl2": 1,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "ED",
+                "catname": "Education",
+                "cat": "Education",
+                "q1": "",
+                "q2": "[INSERT SQUESTION]",
+                "q3": "",
+                "q": "[INSERT SQUESTION]",
+                "type": "Boolean",
+                "if_true_text": "Go to tQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next sQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW 2\"",
+                "links": "[LINK2]"
+            },
+            "ED010101": {
+                "id": "ED010101",
+                "lvl1": 1,
+                "lvl2": 1,
+                "lvl3": 1,
+                "tier": "Pre-Production",
+                "catID": "ED",
+                "catname": "Education",
+                "cat": "Education",
+                "q1": "",
+                "q2": "",
+                "q3": "[INSERT TQUESTION]",
+                "q": "[INSERT TQUESTION]",
+                "type": "String",
+                "if_true_text": "Go to next tQ",
+                "adv_true": "[Advice]",
+                "if_false": "Go to next tQ",
+                "adv_false": "[Advice]",
+                "did_know": "\"DID YOU KNOW 3\"",
+                "links": "[LINK3]"
+            }
+        }
+    ),
+    "ML": (
+        "Mental Mindset",  # Category Name for "ML"
+        {
+            "ML000000": {
+                "id": "ML000000",
+                "lvl1": 0,
+                "lvl2": 0,
+                "lvl3": 0,
+                "tier": "Pre-Production",
+                "catID": "ML",
+                "catname": "Mental Mindset",
+                "cat": "Mental Mindset",
+                "q1": "",
+                "q2": "",
+                "q3": "",
+                "q": "",
+                "type": "",
+                "if_true_text": "",
+                "adv_true": "",
+                "if_false": "",
+                "adv_false": "",
+                "did_know": "",
+                "links": ""
+            }
+        }
+    )
+}
+
+print(combined_dict)
