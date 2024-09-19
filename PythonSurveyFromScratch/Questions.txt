@@ -1,7 +1,7 @@
 PPT000000	Title	Pre-Production	PPT	The Team - Pre-Production	The Team - Pre-Production											
-PPT010000	Primary	Pre-Production	PPT	The Team - Pre-Production		Interested in seeing the key players of Pre-Production?			Interested in seeing the key players of Pre-Production?			[STEPS]		[STEPS]		[TEAMS]
+PPT010000	Primary	Pre-Production	PPT	The Team - Pre-Production		Interested in seeing the key players of Pre-Production?			Interested in seeing the key players of Pre-Production?	Boolean		[STEPS]		[STEPS]		[TEAMS]
 PPO000000	Title	Pre-Production	PPO	The Tools - Pre-Production	The Tools - Pre-Production											
-PPO010000	Primary	Pre-Production	PPO	The Tools - Pre-Production		Would you like to see the common tools that are used in Pre-Production?			Would you like to see the common tools that are used in Pre-Production?			[STEPS]		[STEPS]		[TOOLS]
+PPO010000	Primary	Pre-Production	PPO	The Tools - Pre-Production		Would you like to see the common tools that are used in Pre-Production?			Would you like to see the common tools that are used in Pre-Production?	Boolean		[STEPS]		[STEPS]		[TOOLS]
 IN000000	Title	Pre-Production	IN	In-Take Initial Questions	In-Take Initial Questions											
 IN010000	Primary	Pre-Production	IN	In-Take Initial Questions		Are you interested in this idea?			Are you interested in this idea?	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
 IN010100	Secondary	Pre-Production	IN	In-Take Initial Questions			Are you sure?		Are you sure?	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]

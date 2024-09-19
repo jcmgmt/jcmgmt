@@ -66,7 +66,7 @@ with open('Questions.txt', 'r') as file:
 listOfCategories = tuple(listOfCategories_list)
 
 # Output the final tuple
-print(listOfCategories)  # Example output: ('IN', 'ED', 'ML')
+# print(listOfCategories)  # Example output: ('IN', 'ED', 'ML')
 
 # You can now access the catIDs using the index, e.g.
 # print(listOfCategories[0])  # 'IN'
@@ -76,29 +76,8 @@ print(listOfCategories)  # Example output: ('IN', 'ED', 'ML')
 
 # print(dict_questions["IN"][1].keys()) # searches nested dictionaries for all keys: INXXXXXX
 # print(dict_questions["IN"][1].values()) # searches nested dictionaries for all values: 'tier', 'cat', etc.
-print(dict_questions[listOfCategories[0]][1].keys())
+# print(dict_questions[listOfCategories[0]][1].keys())
 
-# -------------------------------- Getting the first item on the list
-
-def startingQuestionid():
-    return f"{listOfCategories[0]}000000"
-
-startingQuestion = startingQuestionid()
-
-print(startingQuestion)
-
-# --------------------------------
-
-# Access the first nested dictionary entry for the "IN" category
-first_question_key = list(dict_questions["IN"][1].keys())[0]
-
-# Now, get the first value of the first nested dictionary
-first_value = dict_questions["IN"][1][first_question_key]["id"]
-
-# Assign to a variable
-my_variable = first_value
-
-print(my_variable)
 
 """def check():
     # Check if "PPT000000" is in the dictionary under the first category in listOfCategories
