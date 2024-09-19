@@ -1,2 +1,6 @@
-import mod_questionQueryon  #imports variables from separate Python script
+import mod_questionQuery #imports variables from separate Python script
 from mod_questionQuery import * 
+
+import mod_surveyloop #imports variables from separate Python script
+from mod_surveyloop import * 
+
