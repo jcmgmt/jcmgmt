@@ -20,6 +20,7 @@ def surveyloop():
             break
 
         elif user_input == "1": #If the answer is True
+            # Determine design for how to identify question level. Use q1/q2/q3? Add a new column in Google sheets? 
             # Then if the question is primary level:
             # IF THEN
                 #if the question is secondary level:

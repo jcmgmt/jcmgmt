@@ -13,31 +13,27 @@ with open('Questions.txt', 'r') as file:
         
         # Assign each part to a variable (default values for missing parts)
         Qid = parts[0] if len(parts) > 0 else ''
-        level_1 = int(parts[1]) if len(parts) > 1 else 0
-        level_2 = int(parts[2]) if len(parts) > 2 else 0
-        level_3 = int(parts[3]) if len(parts) > 3 else 0
-        tiername = parts[4] if len(parts) > 4 else ''
-        catID = parts[5] if len(parts) > 5 else ''
-        catname = parts[6] if len(parts) > 6 else ''
-        category = parts[7] if len(parts) > 7 else ''
-        question1 = parts[8] if len(parts) > 8 else ''
-        question2 = parts[9] if len(parts) > 9 else ''
-        question3 = parts[10] if len(parts) > 10 else ''
-        question = parts[11] if len(parts) > 11 else ''
-        type = parts[12] if len(parts) > 12 else ''
-        if_trueortext = parts[13] if len(parts) > 13 else ''
-        advice_iftrueortext = parts[14] if len(parts) > 14 else ''
-        if_false = parts[15] if len(parts) > 15 else ''
-        advice_iffalse = parts[16] if len(parts) > 16 else ''
-        did_you_know = parts[17] if len(parts) > 17 else ''
-        weblinks = parts[18] if len(parts) > 18 else ''
+        qlevel = parts[1] if len(parts) > 1 else ''
+        tiername = parts[2] if len(parts) > 2 else ''
+        catID = parts[3] if len(parts) > 3 else ''
+        catname = parts[4] if len(parts) > 4 else ''
+        category = parts[5] if len(parts) > 5 else ''
+        question1 = parts[6] if len(parts) > 6 else ''
+        question2 = parts[7] if len(parts) > 7 else ''
+        question3 = parts[8] if len(parts) > 8 else ''
+        question = parts[9] if len(parts) > 9 else ''
+        q_type = parts[10] if len(parts) > 10 else ''
+        if_trueortext = parts[11] if len(parts) > 11 else ''
+        advice_iftrueortext = parts[12] if len(parts) > 12 else ''
+        if_false = parts[13] if len(parts) > 13 else ''
+        advice_iffalse = parts[14] if len(parts) > 14 else ''
+        did_you_know = parts[15] if len(parts) > 15 else ''
+        weblinks = parts[16] if len(parts) > 16 else ''
         
         # Create a dictionary for the question details
         row_dict = {
             "id": Qid,
-            "lvl1": level_1,
-            "lvl2": level_2,
-            "lvl3": level_3,
+            "qlevel": qlevel,
             "tier": tiername,
             "catID": catID,
             "catname": catname,
@@ -46,7 +42,7 @@ with open('Questions.txt', 'r') as file:
             "q2": question2,
             "q3": question3,
             "q": question,
-            "type": type,
+            "type": q_type,
             "if_true_text": if_trueortext,
             "adv_true": advice_iftrueortext,
             "if_false": if_false,

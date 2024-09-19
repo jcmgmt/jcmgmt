@@ -1,16 +1,119 @@
-combined_dict = {
+dict_questions = {
+    "PPT": (
+        "The Team - Pre-Production", 
+        {
+            "PPT000000": {
+                "id": "PPT000000",
+                "qlevel": "Title",
+                "tier": "Pre-Production",
+                "catID": "PPT",
+                "catname": "The Team - Pre-Production",
+                "cat": "The Team - Pre-Production",
+                "q1": "",
+                "q2": "",
+                "q3": "",
+                "q": "",
+                "type": "",
+                "if_true_text": "",
+                "adv_true": "",
+                "if_false": "",
+                "adv_false": "",
+                "did_know": "",
+                "links": ""
+            },
+            "PPT010000": {
+                "id": "PPT010000",
+                "qlevel": "Primary",
+                "tier": "Pre-Production",
+                "catID": "PPT",
+                "catname": "The Team - Pre-Production",
+                "cat": "",
+                "q1": "Interested in seeing the key players of Pre-Production?",
+                "q2": "",
+                "q3": "",
+                "q": "Interested in seeing the key players of Pre-Production?",
+                "type": "",
+                "if_true_text": "[STEPS]",
+                "adv_true": "",
+                "if_false": "[STEPS]",
+                "adv_false": "",
+                "did_know": "",
+                "links": "[TEAMS]"
+            }
+        }
+    ),
+    "PPO": (
+        "The Tools - Pre-Production",  # Category Name for "PPO"
+        {
+            "PPO000000": {
+                "id": "PPO000000",
+                "qlevel": "Title",
+                "tier": "Pre-Production",
+                "catID": "PPO",
+                "catname": "The Tools - Pre-Production",
+                "cat": "The Tools - Pre-Production",
+                "q1": "",
+                "q2": "",
+                "q3": "",
+                "q": "",
+                "type": "",
+                "if_true_text": "",
+                "adv_true": "",
+                "if_false": "",
+                "adv_false": "",
+                "did_know": "",
+                "links": ""
+            },
+            "PPO010000": {
+                "id": "PPO010000",
+                "qlevel": "Primary",
+                "tier": "Pre-Production",
+                "catID": "PPO",
+                "catname": "The Tools - Pre-Production",
+                "cat": "",
+                "q1": "Would you like to see the common tools that are used in Pre-Production?",
+                "q2": "",
+                "q3": "",
+                "q": "Would you like to see the common tools that are used in Pre-Production?",
+                "type": "",
+                "if_true_text": "[STEPS]",
+                "adv_true": "",
+                "if_false": "[STEPS]",
+                "adv_false": "",
+                "did_know": "",
+                "links": "[TOOLS]"
+            }
+        }
+    ),
     "IN": (
         "In-Take Initial Questions",  # Category Name for "IN"
         {
-            "IN010000": {
-                "id": "IN010000",
-                "lvl1": 1,
-                "lvl2": 0,
-                "lvl3": 0,
+            "IN000000": {
+                "id": "IN000000",
+                "qlevel": "Title",
                 "tier": "Pre-Production",
                 "catID": "IN",
                 "catname": "In-Take Initial Questions",
                 "cat": "In-Take Initial Questions",
+                "q1": "",
+                "q2": "",
+                "q3": "",
+                "q": "",
+                "type": "",
+                "if_true_text": "",
+                "adv_true": "",
+                "if_false": "",
+                "adv_false": "",
+                "did_know": "",
+                "links": ""
+            },
+            "IN010000": {
+                "id": "IN010000",
+                "qlevel": "Primary",
+                "tier": "Pre-Production",
+                "catID": "IN",
+                "catname": "In-Take Initial Questions",
+                "cat": "",
                 "q1": "Are you interested in this idea?",
                 "q2": "",
                 "q3": "",
@@ -25,15 +128,13 @@ combined_dict = {
             },
             "IN010100": {
                 "id": "IN010100",
-                "lvl1": 1,
-                "lvl2": 1,
-                "lvl3": 0,
+                "qlevel": "Secondary",
                 "tier": "Pre-Production",
                 "catID": "IN",
                 "catname": "In-Take Initial Questions",
-                "cat": "In-Take Initial Questions",
-                "q1": "",
-                "q2": "Are you sure?",
+                "cat": "",
+                "q1": "Are you sure?",
+                "q2": "",
                 "q3": "",
                 "q": "Are you sure?",
                 "type": "Boolean",
@@ -46,16 +147,14 @@ combined_dict = {
             },
             "IN010101": {
                 "id": "IN010101",
-                "lvl1": 1,
-                "lvl2": 1,
-                "lvl3": 1,
+                "qlevel": "Tertiary",
                 "tier": "Pre-Production",
                 "catID": "IN",
                 "catname": "In-Take Initial Questions",
-                "cat": "In-Take Initial Questions",
-                "q1": "",
+                "cat": "",
+                "q1": "Explain why you're interested.",
                 "q2": "",
-                "q3": "Explain why you're interested.",
+                "q3": "",
                 "q": "Explain why you're interested.",
                 "type": "String",
                 "if_true_text": "Go to next tQ",
@@ -72,9 +171,7 @@ combined_dict = {
         {
             "ED000000": {
                 "id": "ED000000",
-                "lvl1": 0,
-                "lvl2": 0,
-                "lvl3": 0,
+                "qlevel": "Title",
                 "tier": "Pre-Production",
                 "catID": "ED",
                 "catname": "Education",
@@ -93,13 +190,11 @@ combined_dict = {
             },
             "ED010000": {
                 "id": "ED010000",
-                "lvl1": 1,
-                "lvl2": 0,
-                "lvl3": 0,
+                "qlevel": "Primary",
                 "tier": "Pre-Production",
                 "catID": "ED",
                 "catname": "Education",
-                "cat": "Education",
+                "cat": "",
                 "q1": "[INSERT PQUESTION]",
                 "q2": "",
                 "q3": "",
@@ -114,15 +209,13 @@ combined_dict = {
             },
             "ED010100": {
                 "id": "ED010100",
-                "lvl1": 1,
-                "lvl2": 1,
-                "lvl3": 0,
+                "qlevel": "Secondary",
                 "tier": "Pre-Production",
                 "catID": "ED",
                 "catname": "Education",
-                "cat": "Education",
-                "q1": "",
-                "q2": "[INSERT SQUESTION]",
+                "cat": "",
+                "q1": "[INSERT SQUESTION]",
+                "q2": "",
                 "q3": "",
                 "q": "[INSERT SQUESTION]",
                 "type": "Boolean",
@@ -133,18 +226,16 @@ combined_dict = {
                 "did_know": "\"DID YOU KNOW 2\"",
                 "links": "[LINK2]"
             },
-            "ED010101": {
-                "id": "ED010101",
-                "lvl1": 1,
-                "lvl2": 1,
-                "lvl3": 1,
+            "ED010201": {
+                "id": "ED010201",
+                "qlevel": "Tertiary",
                 "tier": "Pre-Production",
                 "catID": "ED",
                 "catname": "Education",
-                "cat": "Education",
-                "q1": "",
+                "cat": "",
+                "q1": "[INSERT TQUESTION]",
                 "q2": "",
-                "q3": "[INSERT TQUESTION]",
+                "q3": "",
                 "q": "[INSERT TQUESTION]",
                 "type": "String",
                 "if_true_text": "Go to next tQ",
@@ -155,33 +246,5 @@ combined_dict = {
                 "links": "[LINK3]"
             }
         }
-    ),
-    "ML": (
-        "Mental Mindset",  # Category Name for "ML"
-        {
-            "ML000000": {
-                "id": "ML000000",
-                "lvl1": 0,
-                "lvl2": 0,
-                "lvl3": 0,
-                "tier": "Pre-Production",
-                "catID": "ML",
-                "catname": "Mental Mindset",
-                "cat": "Mental Mindset",
-                "q1": "",
-                "q2": "",
-                "q3": "",
-                "q": "",
-                "type": "",
-                "if_true_text": "",
-                "adv_true": "",
-                "if_false": "",
-                "adv_false": "",
-                "did_know": "",
-                "links": ""
-            }
-        }
     )
 }
-
-print(combined_dict)
