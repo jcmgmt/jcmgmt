@@ -63,57 +63,64 @@ def surveyloop():
         nonlocal currentquestion
         currentquestion = f"{catname}{(str(qlevel + plvl).zfill(6))}"
 
-    # Skip "Title" entries that have no questions by updating `currentquestion`.
+    # So that it doesn't get stuck on "Title" entries that have no questions, 
+    # +10000 to the qlevel so that it goes to the first question of the section.
+    # Use a while loop to skip over the "Title" questions.
     while dict_questions[catname][1][currentquestion]["qlevel"] == "Title":
         goToNextPQ()  # Call the function to update 'currentquestion'
         continue
+    else:
+        pass
 
-    # Start the survey loop
+
+    # print(dict_questions[catname][1].keys())
+    print(dict_questions[catname][1][currentquestion]["q"]) #Display the current question
+    # print(dict_questions["PPT"][1]["PPT010000"]["type"]) #Display a test question
+    # print(dict_questions["PPT"][1]["PPT010000"]["qlevel"]) #Display a test question
+
+    print(header_space)         # Display header space
+
+    if dict_questions[catname][1][currentquestion]["type"] == "Boolean":
+        print("[1] Yes")
+        print("[2] No")
+        print("[Exit] Exit")
+    elif dict_questions[catname][1][currentquestion]["type"] == "String":
+        print("Type your response")
+        print("[Exit] Exit")
+    else:
+        print("Error")
+
+
+    print(header_space)         # Display header space
+
     while True:
-        clear_screen()   # Clear the screen before displaying the question
-        print(ascii_art) # Print the ASCII art
-
-        # Display the current question
-        print(dict_questions[catname][1][currentquestion]["q"])
-        print(header_space) # Display header space
-
-        # Show options based on the question type
-        if dict_questions[catname][1][currentquestion]["type"] == "Boolean":
-            print("[1] Yes")
-            print("[2] No")
-            print("[Exit] Exit")
-        elif dict_questions[catname][1][currentquestion]["type"] == "String":
-            print("Type your response")
-            print("[Exit] Exit")
-        else:
-            print("Error")
-            break  # Exit if there's an unexpected question type
-
-        print(header_space) # Display header space
-
-        # Get user input
         user_input = input("Input: ")
-
-        # Exit condition
-        if user_input.lower() == "exit":
+    
+        if user_input == "exit":
             print("Exiting the loop.")
             break
 
-        # If the answer is True ("1")
+        # Maybe we can do a WhileLoop for if input == "1"
         elif user_input == "1":
             if dict_questions[catname][1][currentquestion]["type"] == "Boolean" and dict_questions[catname][1][currentquestion]["qlevel"] == "Primary":
                 goToSQ()
             elif dict_questions[catname][1][currentquestion]["type"] == "Boolean" and dict_questions[catname][1][currentquestion]["qlevel"] == "Secondary":
                 goToTQ()
 
-        # Re-display the survey with the updated question
 
+            # currentquestion = f"{catname}{(str(qlevel + plvl).zfill(6))}" 
+            if currentquestion in dict_questions[catname][1].keys():
+                currentquestion = dict_questions[catname][1].keys()
+                print("True")
+            else:
+                print("Does Not Exist")
+                #print(f"{catnamee}{(str(qlevel + plvl).zfill(6))}")
+            continue
         elif user_input == "2":
             currentquestion = f"{catname}{qlevel}"
             print(currentquestion) 
 
         else:
             print(f"You entered a custom string: {user_input}")
-        continue
 
 surveyloop()
