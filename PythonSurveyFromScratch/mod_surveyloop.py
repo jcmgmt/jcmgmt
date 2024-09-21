@@ -63,6 +63,22 @@ def surveyloop():
         nonlocal currentquestion
         currentquestion = f"{catname}{(str(qlevel + plvl).zfill(6))}"
 
+    def searchNextQ():
+        nonlocal currentquestion 
+        if currentquestion in dict_questions[catname][1].keys():
+            currentquestion = dict_questions[catname][1].keys()
+            print("True")
+        else:
+            print("Does Not Exist")
+            print(currentquestion)
+
+    # ------------------------------
+    #
+    def YesAnswer():
+        if
+    #
+    # ------------------------------
+
     # So that it doesn't get stuck on "Title" entries that have no questions, 
     # +10000 to the qlevel so that it goes to the first question of the section.
     # Use a while loop to skip over the "Title" questions.
@@ -104,16 +120,13 @@ def surveyloop():
         elif user_input == "1":
             if dict_questions[catname][1][currentquestion]["type"] == "Boolean" and dict_questions[catname][1][currentquestion]["qlevel"] == "Primary":
                 goToSQ()
+                searchNextQ()
             elif dict_questions[catname][1][currentquestion]["type"] == "Boolean" and dict_questions[catname][1][currentquestion]["qlevel"] == "Secondary":
                 goToTQ()
+                searchNextQ()
 
 
             # currentquestion = f"{catname}{(str(qlevel + plvl).zfill(6))}" 
-            if currentquestion in dict_questions[catname][1].keys():
-                currentquestion = dict_questions[catname][1].keys()
-                print("True")
-            else:
-                print("Does Not Exist")
                 #print(f"{catnamee}{(str(qlevel + plvl).zfill(6))}")
             continue
         elif user_input == "2":
