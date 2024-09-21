@@ -1,9 +1,6 @@
 isQ = dict_questions[catname][1][currentquestion]["qlevel"]
-
 nextTQ = f"{catname}{(str(qlevel + 1).zfill(6))}"
-
 nextSQ = f"{catname}{(str(qlevel + 100).zfill(6))}"
-
 nextPQ = f"{catname}{(str(qlevel + 10000).zfill(6))}"
 
 def ifpq():
@@ -15,28 +12,49 @@ def ifpq():
             if name == search_item:
                 currentquestion = f"{listOfCategories[index + 1]}000000"
 
-
 def ifsq():
     if nextSQ in dict_questions[catname][1].keys():
         currentquestion = nextSQ
     else:
         ifpq()
 
-
 def iftq():
     if nextTQ in dict_questions[catname][1].keys():
         currentquestion = nextTQ
-    else:
+    elif nextSQ in dict_questions[catname][1].keys():
         ifsq()
-
-
+    else:
+        ifpq()
 
 def YesAnswer():
-    if isq == "Primary" and user_input == "1":
+        if isQ == "Title":
+            ifpq()
+            print(currentquestion)
+        elif isQ == "Primary":
+            ifsq()
+            print(currentquestion)
+        elif isQ == "Secondary":
+            iftq()
+            print(currentquestion)
+        elif isQ == "Tertiary":
+            iftq()
+            print(currentquestion)
+        else:
+            print("Invalid Option")
+            print(currentquestion)
+
+def NoAnswer():
+    if isQ == "Primary":
+        ifpq()
+    elif isQ == "Secondary":
+        ifpq()
+    elif isQ == "Tertiary":
         ifsq()
-    elif isq == "Secondary" and user_input == "1":
-        iftq()
-    elif isq == "Tertiary" and user_input == "1":
-        iftq()
     else:
         print("Invalid Option")
+
+while dict_questions[catcurrentname][1][currentquestion]["qlevel"] == "Title":
+    goToNextPQ()  # Call the function to update 'currentquestion'
+    continue
+else:
+    pass
