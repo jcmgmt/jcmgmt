@@ -30,7 +30,7 @@ def startingQuestionid():
 
 startingQuestion = startingQuestionid()
 
-print(startingQuestion)
+# print(startingQuestion)
 
 # --------------------------------
 
@@ -107,7 +107,7 @@ def surveyloop():
 
 
     print(header_space)         # Display header space
-
+"""
     while True:
         user_input = input("Input: ")
     
@@ -136,3 +136,5 @@ def surveyloop():
             print(f"You entered a custom string: {user_input}")
 
 surveyloop()
+
+"""

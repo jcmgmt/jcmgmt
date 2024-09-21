@@ -50,9 +50,12 @@ def ifpq():
         currentquestion = nextPQ
     else:
         search_item = catcurrentname
-        for index, name in listOfCategories:
-            if name == search_item:
+        for index, name in enumerate(listOfCategories):
+            if index + 1 < len(listOfCategories):
                 currentquestion = f"{listOfCategories[index + 1]}000000"
+            else:
+                print("Whelp")
+            break
 
 def ifsq():
     if nextSQ in dict_questions[catcurrentname][1].keys():
@@ -148,7 +151,7 @@ def skipTitle():
     else:
         pass
 
-
+"""
 
 
 while True:
@@ -183,3 +186,16 @@ while True:
 
 clear_screen()
 print("Thanks for using this program. Take care!")
+"""
+
+# print("ME")
+# print(f"{listOfCategories[2]}000000")
+def testLoop():
+    search_item = catcurrentname
+    for index, name in enumerate(listOfCategories):
+        if index + 1 < len(listOfCategories):
+            print(index,name)
+            print(f"{listOfCategories[index + 1]}000000")
+        else:
+            print("Whelp")
+testLoop()

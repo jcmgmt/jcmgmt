@@ -1,3 +1,11 @@
+import mod_questionQuery #imports variables from separate Python script
+from mod_questionQuery import * 
+
+import mod_surveyloop #imports variables from separate Python script
+from mod_surveyloop import startingQuestion
+
+import os
+
 isQ = dict_questions[catname][1][currentquestion]["qlevel"]
 nextTQ = f"{catname}{(str(qlevel + 1).zfill(6))}"
 nextSQ = f"{catname}{(str(qlevel + 100).zfill(6))}"
@@ -8,9 +16,15 @@ def ifpq():
         currentquestion = nextPQ
     else:
         search_item = catname
-        for index, name in listOfCategories:
+        for index, name in enumerate(listOfCategories):
             if name == search_item:
-                currentquestion = f"{listOfCategories[index + 1]}000000"
+        # Check if the next index exists to avoid an out-of-range error
+                if index + 1 < len(listOfCategories):
+            # Update currentquestion based on the next category in the list
+                    currentquestion = f"{listOfCategories[index + 1]}000000"
+                else:
+                    print("Reached the end of the list. No more categories.")
+        break
 
 def ifsq():
     if nextSQ in dict_questions[catname][1].keys():
@@ -58,3 +72,6 @@ while dict_questions[catcurrentname][1][currentquestion]["qlevel"] == "Title":
     continue
 else:
     pass
+
+
+print("ME")
