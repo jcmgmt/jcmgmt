@@ -3,6 +3,8 @@ from mod_questionQuery import *
 
 import os
 
+# os.chdir('/Users/jcmgmt/Documents/GitHub/jcmgmt/PythonSurveyFromScratch')
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -25,18 +27,11 @@ ascii_art = r"""
 """
 # -------------------------------- Getting the first item on the list
 
-def startingQuestionid():
-    return f"{listOfCategories[0]}000000"
-
-startingQuestion = startingQuestionid()
-
-print(startingQuestion)
-
+startingQuestion = f"{listOfCategories[0]}000000"
+# print(startingQuestion)
 currentquestion = startingQuestion      # "XX[X]000000"
-
 catcurrentname = str(currentquestion[:-6])     # XX[X]...
 qlevel = int(currentquestion[-6:])      # ...010101
-
 
 # To update 'currentquestion', we can use the 'nonlocal' keyword in Python
 # Or pass 'currentquestion' as an argument if we're in a nested function
@@ -142,7 +137,7 @@ def questionInterface():
         print("Error")
           
 def skipTitle():
-    # So that it doesn't get stuck on "Title" entries that have no questions, 
+    # So that it doesn't get stuck on keys with "Title" as the qlevel, 
     # +10000 to the qlevel so that it goes to the first question of the section.
     # Use a while loop to skip over the "Title" questions.
     while dict_questions[catcurrentname][1][currentquestion]["qlevel"] == "Title":
@@ -150,9 +145,6 @@ def skipTitle():
         continue
     else:
         pass
-
-"""
-
 
 while True:
     questionInterface()
@@ -178,7 +170,7 @@ while True:
             print(currentquestion) 
 
         else:
-            print(f"You entered a custom string: {option}")
+            print(f"You entered: {option}")
 
     except ValueError:
         print("Please provide a valid input.")
@@ -186,16 +178,16 @@ while True:
 
 clear_screen()
 print("Thanks for using this program. Take care!")
-"""
+
 
 # print("ME")
 # print(f"{listOfCategories[2]}000000")
-def testLoop():
-    search_item = catcurrentname
-    for index, name in enumerate(listOfCategories):
-        if index + 1 < len(listOfCategories):
-            print(index,name)
-            print(f"{listOfCategories[index + 1]}000000")
-        else:
-            print("Whelp")
-testLoop()
+#def testLoop():
+#    search_item = catcurrentname
+#    for index, name in enumerate(listOfCategories):
+#        if index + 1 < len(listOfCategories):
+#            print(index,name)
+#            print(f"{listOfCategories[index + 1]}000000")
+#        else:
+#            print("Whelp")
+# testLoop()
