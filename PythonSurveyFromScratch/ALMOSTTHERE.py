@@ -2,6 +2,7 @@ import mod_questionQuery #imports variables from separate Python script
 from mod_questionQuery import * 
 
 import os
+import math
 
 # os.chdir('/Users/jcmgmt/Documents/GitHub/jcmgmt/PythonSurveyFromScratch')
 
@@ -52,6 +53,9 @@ def questionInterface():
         print("[Exit] Exit")
     else:
         print("Error")
+
+print(f"catID: {dict_questions[catcurrentname][1][currentquestion]}")  # Should be 'PPT', 'ED', etc.
+print(f"currentquestion: {currentquestion}") 
 
 while True:
     

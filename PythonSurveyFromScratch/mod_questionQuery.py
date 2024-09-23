@@ -71,7 +71,7 @@ listOfCategories = tuple(listOfCategories_list)
 # You can now access the catIDs using the index, e.g.
 # print(listOfCategories[0])  # 'IN'
 # print(listOfCategories[1])  # 'ED'
-print(listOfCategories.index('PPO'))
+# #print(listOfCategories.index('PPO'))
 
 # --------------------------------
 
@@ -93,4 +93,5 @@ result = check()
 # Print the result
 print(result)
 """
-print(dict_questions.keys())
+#print(dict_questions.keys())
+#print(dict_questions["ED"][1]["ED000000"]["qlevel"])
