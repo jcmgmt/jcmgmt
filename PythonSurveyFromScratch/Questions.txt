@@ -6,6 +6,8 @@ IN000000	Title	Pre-Production	IN	In-Take Initial Questions	In-Take Initial Quest
 IN010000	Primary	Pre-Production	IN	In-Take Initial Questions		Are you interested in this idea?			Are you interested in this idea?	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
 IN010100	Secondary	Pre-Production	IN	In-Take Initial Questions			Are you sure?		Are you sure?	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
 IN010101	Tertiary	Pre-Production	IN	In-Take Initial Questions				Explain why you're interested.	Explain why you're interested.	String	Go to next tQ	[Advice]	Go to next tQ	[Advice]	"DID YOU KNOW 3"	[LINK3]
+IN010200	Secondary	Pre-Production	IN	In-Take Initial Questions			Are you sure?		Are you sure?	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
+IN020000	Primary	Pre-Production	IN	In-Take Initial Questions		Are you interested in this idea?			Are you interested in this idea?	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
 ED000000	Title	Pre-Production	ED	Education	Education											
 ED010000	Primary	Pre-Production	ED	Education		[INSERT PQUESTION]			[INSERT PQUESTION]	Boolean	Go to sQ	[Advice]	Go to next pQ	[Advice]	"DID YOU KNOW"	[LINK]
 ED010100	Secondary	Pre-Production	ED	Education			[INSERT SQUESTION]		[INSERT SQUESTION]	Boolean	Go to tQ	[Advice]	Go to next sQ	[Advice]	"DID YOU KNOW 2"	[LINK2]
