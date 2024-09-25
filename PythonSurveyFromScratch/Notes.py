@@ -1,148 +1,105 @@
-import mod_questionQuery #imports variables from separate Python script
-from mod_questionQuery import * 
+def checkstatus(listXO,playerwin,XOwin):
+    global win, sheet, gone, listx, listo
+    #checks if there is a winner
+    if 1 in listXO and 2 in listXO and 3 in listXO:
+        winspeak(playerwin,XOwin) #vertical
+    elif 4 in listXO and 5 in listXO and 6 in listXO:
+        winspeak(playerwin,XOwin) #vertical
+    elif 7 in listXO and 8 in listXO and 9 in listXO:
+        winspeak(playerwin,XOwin) #vertical
+    elif 1 in listXO and 4 in listXO and 7 in listXO:
+        winspeak(playerwin,XOwin) #horizontal
+    elif 2 in listXO and 5 in listXO and 8 in listXO:
+        winspeak(playerwin,XOwin) #horizontal
+    elif 3 in listXO and 6 in listXO and 9 in listXO:
+        winspeak(playerwin,XOwin) #horizontal
+    elif 1 in listXO and 5 in listXO and 9 in listXO:
+        winspeak(playerwin,XOwin) #diagonal
+    elif 3 in listXO and 5 in listXO and 7 in listXO:
+        winspeak(playerwin,XOwin) #diagonal
+      
+    if (len(listx) + len(listo)) == 9: #checks for tie
+        print("\nNeither player wins, thats a tie!")
+        print("Player 1:",xscore,"\nPlayer 2:",oscore)
 
-import mod_surveyloop #imports variables from separate Python script
-from mod_surveyloop import *
+        while True:
+            keep = input("Continue? (y/n)\n > ")
+            if keep == "y":
+                win = "h"
+                sheet = "|1|2|3|\n|4|5|6|\n|7|8|9|"
+                gone = []
+                multigame()
+            elif keep == "n":
+                quit()
 
-import os
+def winspeak(player,XOwin): #winner
+    global win, sheet, gone, xscore, oscore
+    win == XOwin
+    print("\n"+player+" wins!\n")
 
-# os.chdir('/Users/jcmgmt/Documents/GitHub/jcmgmt/PythonSurveyFromScratch')
+    #increases winner's score
+    if player == "Player 1": 
+        xscore += 1
+    elif player == "Player 2": 
+        oscore += 1
+    print("Player 1:",xscore,"\nPlayer 2:",oscore)
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    while True:
+        keep = input("Continue? (y/n)\n > ")
+        if keep == "y":
+            win = "h"
+            sheet = "|1|2|3|\n|4|5|6|\n|7|8|9|"
+            gone = []
+            multigame()
+        elif keep == "n":
+            quit()
 
-ascii_art = r"""
-  __  __           _         _____                           __  __       _        _      
- |  \/  |         (_)       / ____|                         |  \/  |     | |      (_)     
- | \  / |_   _ ___ _  ___  | |     __ _ _ __ ___  ___ _ __  | \  / | __ _| |_ _ __ ___  __
- | |\/| | | | / __| |/ __| | |    / _` | '__/ _ \/ _ \ '__| | |\/| |/ _` | __| '__| \ \/ /
- | |  | | |_| \__ \ | (__  | |___| (_| | | |  __/  __/ |    | |  | | (_| | |_| |  | |>  < 
- |_|  |_|\__,_|___/_|\___|  \_____\__,_|_|  \___|\___|_|    |_|  |_|\__,_|\__|_|  |_/_/\_\
- -----------------------------------------------------------------------------------------
-"""
+def play(XO,player,listXO):
+    global sheet, listx, listo
+    while True:
+        num = input(player+" enter an available number where you want to put an "+XO+".\n > ")
 
-# Assuming mod_questionQuery contains listOfCategories and dict_questions
-# from mod_questionQuery import listOfCategories, dict_questions
-
-startingQuestion = f"{listOfCategories[0]}000000"
-
-currentquestion = startingQuestion  # Initialize question id
-catcurrentname = currentquestion[:-6]  # Category name
-qlevel = int(currentquestion[-6:])  # Question level (integer)
-
-
-# To update the current question based on question levels
-def update_question_levels():
-    global currentquestion, qlevel
-    nextTQ = f"{catcurrentname}{(str(qlevel + 1).zfill(6))}"
-    nextSQ = f"{catcurrentname}{(str(qlevel + 100).zfill(6))}"
-    nextPQ = f"{catcurrentname}{(str(qlevel + 10000).zfill(6))}"
-    return nextTQ, nextSQ, nextPQ
-
-
-# Navigate to the next Primary Question
-def ifpq():
-    global currentquestion, qlevel
-    nextPQ = update_question_levels()[2]
-    if nextPQ in dict_questions[catcurrentname][1]:
-        currentquestion = nextPQ
-        qlevel = int(currentquestion[-6:])  # Update qlevel after updating question
-    else:
-        search_item = catcurrentname
-        for index, name in enumerate(listOfCategories):
-            if index + 1 < len(listOfCategories):
-                currentquestion = f"{listOfCategories[index + 1]}000000"
-                qlevel = 0  # Reset qlevel when moving to the next category
-            else:
-                print("No more categories.")
-                break
-
-
-# Navigate to the next Secondary Question
-def ifsq():
-    global currentquestion, qlevel
-    nextSQ = update_question_levels()[1]
-    if nextSQ in dict_questions[catcurrentname][1]:
-        currentquestion = nextSQ
-        qlevel = int(currentquestion[-6:])  # Update qlevel after updating question
-    else:
-        ifpq()
-
-
-# Navigate to the next Tertiary Question
-def iftq():
-    global currentquestion, qlevel
-    nextTQ = update_question_levels()[0]
-    if nextTQ in dict_questions[catcurrentname][1]:
-        currentquestion = nextTQ
-        qlevel = int(currentquestion[-6:])  # Update qlevel after updating question
-    else:
-        ifsq()
-
-
-# Handle 'Yes' Answer
-def YesAnswer():
-    global currentquestion, isQ
-    isQ = dict_questions[catcurrentname][1][currentquestion]["qlevel"]
-    if isQ == "Title":
-        ifpq()
-    elif isQ == "Primary":
-        ifsq()
-    elif isQ == "Secondary":
-        iftq()
-    elif isQ == "Tertiary":
-        iftq()
-    else:
-        print("Invalid Option")
-
-
-# Handle 'No' Answer
-def NoAnswer():
-    global currentquestion
-    ifpq()
-
-
-# Interface for displaying the question
-def questionInterface():
-    clear_screen()
-    skipTitle()  # Skip title questions if necessary
-    print(ascii_art)
-    print(f"Question: {dict_questions[catcurrentname][1][currentquestion]['q']}")
-    print(f"Type: {dict_questions[catcurrentname][1][currentquestion]['type']}")
-    print("[1] Yes")
-    print("[2] No")
-    print("[Exit] Exit")
-
-
-# Skip Title Questions
-def skipTitle():
-    global currentquestion
-    while dict_questions[catcurrentname][1][currentquestion]["qlevel"] == "Title":
-        ifpq()
-
-
-# Main Loop
-while True:
-    questionInterface()
+        try:
+            num = int(num)
+        except ValueError:
+            print("Not a valid number, try again.")
+            continue
+        if num < 1 or num > 9:
+            print("Number not in correct range, try again.")
+            continue
+        if num in gone:
+            print("Number already used, try again.")
+            continue
     
-    try:
-        option = input("Enter your option: ")
+        gone.append(num)
+        listXO.append(num)
+        sheet = sheet.replace(str(num),XO)
+        print(sheet)
+        break
 
-        if option.lower() == "exit":
-            break
+def game(): #one game
+    global gone, listx, listo, sheet, win, turn, xscore, oscore
+    win = "h"
+    sheet = "|1|2|3|\n|4|5|6|\n|7|8|9|"
+    print(sheet)
+    turn = 0
+    xscore = 0
+    oscore = 0
+    gone = []
+    listx = []
+    listo = []
+    while True:
+        while win != "Xwin" or win != "Owin": #plays the game and checks for winner
+            if turn % 2 == 0:
+                play("X","Player 1",listx)
+                checkstatus(listx,"Player 1","Xwin")
+            elif turn % 2 == 1:
+                play("O","Player 2",listo)
+                checkstatus(listo,"Player 2","Owin")
+            turn += 1
 
-        elif option == "1":  # Handle Yes Answer
-            YesAnswer()
+def multigame(): #many games
+    while True:
+        game()
 
-        elif option == "2":  # Handle No Answer
-            NoAnswer()
-
-        else:
-            print(f"You entered: {option}")
-
-    except ValueError:
-        print("Please provide a valid input.")
-        input("Press Enter to continue...")
-
-clear_screen()
-print("Thanks for using this program!")
+multigame()
