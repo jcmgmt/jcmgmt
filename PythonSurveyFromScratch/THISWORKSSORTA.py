@@ -28,6 +28,7 @@ qlevel = int(currentquestion[-6:])      # ...010101
 def questionInterface():
     clear_screen()
     print(ascii_art)                        # Print the ASCII art
+    print(f"Question: {dict_questions[catcurrentname][1][currentquestion]['id']}")  # Display the current question
     print(f"Question: {dict_questions[catcurrentname][1][currentquestion]['q']}")  # Display the current question
 
     # Handle question type and present options
