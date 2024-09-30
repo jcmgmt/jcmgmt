@@ -29,14 +29,81 @@ the expected return is
 
 # Modify this function.
 def line_count(filename):
-    f = Open(filename) 
-    contents = f.read
+    f = open(filename,'r') 
+    contents = f.readlines()
     lines = contents.split("\n")
     f.close()
-    return len(line)
+    return len(lines)
+
 
 # You may alter the code below to test your solution or print help documentation.
 # Only the line_count function will be graded for this assessment.
 
-# print(line_count('test.txt'))
+print(line_count('test.txt'))
 # help(help)
+file = open("Test.txt", 'r')
+list = file.readlines()
+#lines = list.split("\n")
+print(len(list))
+"""
+
+An existing function word_count is meant to open a text file, read the contents, and return the number of words in the file. However, several issues throw errors, and the function is not working as intended.
+
+Update the code within the Python function word_count. The function should accept a string identifying the name of a text file, read the contents of the text file, count the total number of words, and return the word count. For simplicity, assume words are separated by spaces.
+
+Example: If the text file "test.txt" contains:
+
+bash
+Copy code
+Hello world
+This is a test
+the expected return is:
+
+Copy code
+5
+If the text file "lorem.txt" contains:
+
+Copy code
+Lorem ipsum dolor sit amet
+consectetur adipiscing elit
+the expected return is:
+
+Copy code
+6
+
+
+"""
+
+#ENTER CODE
+
+"""
+
+An existing function char_count is intended to open a text file, read the contents, and return the number of characters in the file (including spaces). However, the function has errors and is not functioning properly.
+
+Update the code within the Python function char_count. The function should accept a string identifying the name of a text file, read the contents of the text file, count the total number of characters (including spaces and newline characters), and return the character count.
+
+Example: If the text file "test.txt" contains:
+
+Copy code
+Hello
+World
+the expected return is:
+
+Copy code
+11
+(There are 10 characters and 1 newline character between the words.)
+
+If the text file "lorem.txt" contains:
+
+Copy code
+Lorem ipsum
+dolor sit amet
+the expected return is:
+
+Copy code
+22
+
+
+"""
+
+#ENTER CODE

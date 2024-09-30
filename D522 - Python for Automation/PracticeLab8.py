@@ -32,9 +32,14 @@ def write_dict_to_csv(filename):
 
     # Write the data to the CSV file.
     # Write your code here.
+    file = open(filename, 'r')
+    writer = csv.writer(file)
+    headers = next(writer)
+    devices = data
+    file.close()
     
     # Print to check your work; what you print to stdout does not affect the assessment.
-    # print('\n'.join([','.join(fieldnames)] + [','.join(str(d[field]) for field in fieldnames) for d in data]))
+    print('\n'.join([','.join(fieldnames)] + [','.join(str(d[field]) for field in fieldnames) for d in data]))
    
 
 # You may alter the code below to test your solution or print help documentation.
